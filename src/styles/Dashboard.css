@@ -1,0 +1,107 @@
+/* src/styles/Dashboard.css */
+.dashboard-container {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  background-color: #2C3E50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  font-size: 24px;
+}
+
+.logout-button {
+  background-color: #E74C3C;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.logout-button:hover {
+  background-color: #C0392B;
+}
+
+.dashboard-body {
+  display: flex;
+  flex: 1;
+}
+
+.dashboard-sidebar {
+  background-color: #34495E;
+  width: 250px;
+  padding: 20px;
+}
+
+.dashboard-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-sidebar li {
+  margin: 15px 0;
+}
+
+.dashboard-sidebar a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.dashboard-sidebar a:hover {
+  color: #E74C3C;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 20px;
+  background-color: #ECF0F1;
+}
+
+.dashboard-main h2 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.stats-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.stats-card p {
+  font-size: 16px;
+}
+
+@media (max-width: 768px) {
+  .dashboard-body {
+    flex-direction: column;
+  }
+
+  .dashboard-sidebar {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dashboard-header {
+    flex-direction: column;
+  }
+}
