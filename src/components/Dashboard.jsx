@@ -1,22 +1,39 @@
 // src/components/Dashboard.jsx
 import React from 'react';
-import './Dashboard.css';
+import { useNavigate, Link } from 'react-router-dom'; // Importa useNavigate y Link
+import '../styles/Dashboard.css';
 
 const Dashboard = () => {
+  const navigate = useNavigate(); // Hook para la navegación programática
+
+  const handleLogout = () => {
+    // Lógica para cerrar sesión (puedes limpiar el estado, eliminar tokens, etc.)
+    navigate('/'); // Redirige al usuario a la página de Login
+  };
+
   return (
     <div className="dashboard-container">
       <header className="dashboard-header">
         <h1>Bienvenido al Entorno del Jugador ⚽</h1>
-        <button className="logout-button">Cerrar sesión</button>
+        <button className="logout-button" onClick={handleLogout}>Cerrar sesión</button>
       </header>
 
       <div className="dashboard-body">
         <aside className="dashboard-sidebar">
           <ul>
-            <li><a href="#">Perfil</a></li>
-            <li><a href="#">Estadísticas</a></li>
-            <li><a href="#">Partidos</a></li>
-            <li><a href="#">Configuraciones</a></li>
+            {/* Enlaces a las nuevas páginas usando <Link> de react-router-dom */}
+            <li>
+              <Link to="/profile">Perfil</Link> {/* Enlace a la página de Perfil */}
+            </li>
+            <li>
+              <Link to="/teambuilder">Armar Equipo</Link> {/* Enlace a la página de Armado de Equipos */}
+            </li>
+            <li>
+              <Link to="/matches">Partidos</Link> {/* Enlace a la página de Partidos */}
+            </li>
+            <li>
+              <Link to="/settings">Configuraciones</Link> {/* Enlace a la página de Configuración */}
+            </li>
           </ul>
         </aside>
 
