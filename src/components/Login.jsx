@@ -29,6 +29,8 @@ const Login = () => {
       console.log(data.password)
       // Verificar si el JSON recibido tiene la contraseña y compararla
       if (data.password && data.password === password) {
+        localStorage.setItem('userId', data.id)
+        localStorage.setItem('userEmail', data.email)
         navigate('/dashboard'); // Redirigir si la contraseña es correcta
       } else {
         console.log("Cotraseña equivocada")
