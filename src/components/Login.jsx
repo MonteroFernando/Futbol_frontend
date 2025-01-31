@@ -1,14 +1,45 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import "../styles/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [error, setError] = useState('');
 
-  const handleLogin = (event) => {
+  const handleLogin = async (event) => {
     event.preventDefault();
-    // Aquí podrías validar las credenciales antes de redirigir
-    navigate('/dashboard'); // Redirige al Dashboard
+
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+
+    
+    try {
+      const response = await fetch('http://127.0.0.1:5001/jugador/get', {
+        method: 'POST',  // Usar POST
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email })  // Enviar solo el email
+      });
+
+      if (!response.ok) {
+        throw new Error('Usuario no encontrado');
+      }
+
+      const data = await response.json();
+      
+      console.log(data.password)
+      // Verificar si el JSON recibido tiene la contraseña y compararla
+      if (data.password && data.password === password) {
+        navigate('/dashboard'); // Redirigir si la contraseña es correcta
+      } else {
+        console.log("Cotraseña equivocada")
+        setError('Contraseña incorrecta');
+        alert("CONTRASEÑA INCORRECTA")
+      }
+    } catch (err) {
+      console.log("Error en la solicitud:", err)
+      setError(err.message);
+      alert(err)
+    }
   };
 
   return (
